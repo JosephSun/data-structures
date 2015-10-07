@@ -156,6 +156,9 @@ define([
         queue.dequeue();
         queue.enqueue('c');
         expect(queue.dequeue()).to.equal('b');
+        // queue.enqueue('c');
+        // queue.dequeue();
+        // expect(queue.dequeue()).to.equal('a');
       });
     });
 
