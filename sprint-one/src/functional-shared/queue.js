@@ -17,7 +17,6 @@ queueMethods.size =  function(){
 queueMethods.enqueue = function (value) {
   this.storage[this.index +  this.count] = value;
   this.index++;// = this.index + 1;
-  console.log("This.index", this.index);
 }
 queueMethods.dequeue = function(){
   if (this.index > 0){
