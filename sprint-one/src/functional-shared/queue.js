@@ -4,11 +4,12 @@ var Queue = function(){
     var obj = {};
   obj.index = 0;
   obj.storage = {};
+  obj.count = 0;
   // obj.count = 0;
   // _.extend(obj, stackMethods);
-  obj.size = stackMethods.size;
-  obj.enque = stackMethods.enque; 
-  obj.deque = stackMethods.deque; 
+  obj.size = queueMethods.size;
+  obj.enqueue = queueMethods.enqueue; 
+  obj.dequeue = queueMethods.dequeue; 
   return obj; 
 };
 
@@ -17,18 +18,20 @@ var queueMethods = {};
 queueMethods.size =  function(){
   return this.index; 
 } 
-queueMethods.enque = function (value) {
-  this.storage[this.index] = value;
-  this.index++// = this.index + 1;
+queueMethods.enqueue = function (value) {
+  this.storage[this.index +  this.count] = value;
+  this.index++;// = this.index + 1;
+  console.log("This.index", this.index);
 }
-queueMethods.deque = function(){
+queueMethods.dequeue = function(){
   if (this.index > 0){
-    var temp = this.storage[this.index - 1];
-    delete this.storage[this.index - 1];
-    this.index--; 
-    return temp; 
+    var dequeItem = this.storage[this.count];
+    delete this.storage[this.count];
+    this.index--;
+    this.count++; 
+    return dequeItem; 
   }
-var queueMethods = {};
+}
 
 
 
