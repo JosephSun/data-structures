@@ -16,10 +16,8 @@ var LinkedList = function(){
   list.removeHead = function(){
     var removedHeadValue = list.head.value;
     var afterCurrentHead = list.head.next;
-    // console.log("List.head.next", afterCurrentHead);
     delete list.head;
     list.head = afterCurrentHead;
-    // console.log("List", list, "removedHead", removedHeadValue);
     return removedHeadValue;
   };
 
@@ -50,13 +48,6 @@ var Node = function(value){
   return node;
 };
 
-
-var myList = LinkedList();
-myList.addToTail(4);
-myList.addToTail(5);
-myList.removeHead();
-
-console.log("myList:", myList)
 /*
  * Complexity: What is the time complexity of the above functions?
  */
