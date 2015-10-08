@@ -5,11 +5,7 @@ var Queue = function(){
   obj.index = 0;
   obj.storage = {};
   obj.count = 0;
-  // obj.count = 0;
-  // _.extend(obj, stackMethods);
-  obj.size = queueMethods.size;
-  obj.enqueue = queueMethods.enqueue; 
-  obj.dequeue = queueMethods.dequeue; 
+  _.extend(obj, queueMethods);
   return obj; 
 };
 
