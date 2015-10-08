@@ -4,9 +4,11 @@ var Stack = function() {
   var obj = {};
   obj.index = 0;
   obj.storage = {};
+  // obj.count = 0;
   // _.extend(obj, stackMethods);
   obj.size = stackMethods.size;
   obj.push = stackMethods.push; 
+  obj.pop = stackMethods.pop; 
   return obj; 
 };
 
@@ -16,11 +18,16 @@ stackMethods.size =  function(){
 } 
 stackMethods.push = function (value) {
   this.storage[this.index] = value;
-  this.index = this.index + 1;
+  this.index++// = this.index + 1;
+}
+stackMethods.pop = function(){
+  if (this.index > 0){
+    var temp = this.storage[this.index - 1];
+    delete this.storage[this.index - 1];
+    this.index--; 
+    return temp; 
+  }
 }
 
 
-
-var myStack = Stack();
-console.log("obj that is stack", myStack,"mystack.size", myStack.push, "mystack.size()", myStack.push('ha'))
 
