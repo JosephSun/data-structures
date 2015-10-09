@@ -21,12 +21,27 @@ Graph.prototype.contains = function(node){
 };
 
 Graph.prototype.removeNode = function(node){
+  for(var property in this.storage){
+    if(this.storage[property].value === node){
+      delete this.storage[property];
+      this.index--;
+    }
+  }
+
 };
 
 Graph.prototype.hasEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.addEdge = function(fromNode, toNode){
+  for(var property in this.storage){
+    if(this.storage[property].value === fromNode){
+      this.storage[property].edge.push(toNode);
+    } else if(this.storage[property].value === toNode){
+      this.storage[property].edge.push(fromNode);
+    }
+  }
+
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
@@ -41,7 +56,9 @@ Graph.prototype.forEachNode = function(cb){
 
 function NodeForGraph(val){
   var node = {
-    value: val
+    value: val,
+    edge: []
+
   };
   return node;
 }
