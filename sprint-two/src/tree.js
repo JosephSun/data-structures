@@ -3,31 +3,26 @@ var Tree = function(value){
   newTree.value = value;
 
   // your code here
-  newTree.children = [];  // fix me
+  newTree.children = [];
   _.extend(newTree,treeMethods);
   return newTree;
 };
 
 
-
-
-
 var treeMethods = {};
 
+
+
+//Time Complexity: Constant time O(1). We are only utilizing one operation no matter the input. 
 treeMethods.addChild = function(value){
   this.children.push(Tree(value));
-  // this.value = this.value + value; 
-
-
 };
-
+//Time Complexity: Runs in linear time- O(n)- because we are, at worst, traversing every node. 
 treeMethods.contains = function(target){
 
   if (this.value === target) {
     return true;
-   //  if (this.children.length === 0) {
-   //    return false; 
-   // }
+
   }
   var foundNode = false;
   var findValue = function(arr) {
