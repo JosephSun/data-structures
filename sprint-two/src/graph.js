@@ -5,11 +5,15 @@ var Graph = function(){
   this.index = 0;
 };
 
+//Time complexity: O(1) because we are just completing two operations (storing value and adding index by 1) regardless of the input. 
+
 Graph.prototype.addNode = function(node){
   this.storage[this.index] = NodeForGraph(node);
   this.index++;
 };
 
+
+//Time complexity: O(n) because we are traversing an array (traversing this.storage). This array, might at times have 6 values or 100 values. So our time is dependent on the size of the array, or if you prefer on the inputs of the array.
 Graph.prototype.contains = function(node){
   var foundNode = false;
   for (var property in this.storage){
@@ -20,6 +24,7 @@ Graph.prototype.contains = function(node){
   return foundNode;
 };
 
+//Time complexity: O(n) beacause our function is iterating over an array that at times might have 1 or 1000 elements.
 Graph.prototype.removeNode = function(node){
   for(var property in this.storage){
     if(this.storage[property].value === node){
@@ -30,12 +35,13 @@ Graph.prototype.removeNode = function(node){
 
 };
 
+
+//Time Complexity: O(n^2): quadratic operation
 Graph.prototype.hasEdge = function(fromNode, toNode){
   var foundEdge = false;
   for (var property in this.storage){
     var neededNode = this.storage[property];
     if(neededNode.value === fromNode ||  neededNode.value === toNode){
-      // console.log("GOING THROUGH IF");
       for(var i = 0; i < neededNode.edge.length; i++){
         if(neededNode.edge[i] === fromNode || neededNode.edge[i] === toNode){
           foundEdge = true;
@@ -74,12 +80,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.forEachNode = function(cb){
-  // for(var property in this.storage){
-  //   var currentNode = this.storage[property];
-  //   console.log("cb", cb, "currentNode", currentNode);
-  //   cb(currentNode);
-  //   console.log("arguments", arguments);
-  // }
+
   _.each(this.storage, function(node) {
     if (node.value !== undefined) {
       cb(node.value);
@@ -102,9 +103,3 @@ function NodeForGraph(val){
 }
 
 
-// var graph = new Graph();
-// graph.addNode('puppies');
-// graph.addNode('kittens');
-// graph.addNode('penguins');
-
-// console.log('graph', graph)
