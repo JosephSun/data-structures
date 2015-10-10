@@ -6,33 +6,47 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-    // console.log(this._storage.get(i));
-   // if (this._storage.get(i) !== null && this._storage.get(i) !== undefined){
-   //  this._storage.set(i + 1,v); //does not work to stop the collision
-    //this.index++;
-     // console.log('i', i, 'this._storage', this._storage, "this._storage.get(i)", this._storage.get(i));
-  //}else {
-    this._storage.set(i,v);
-  //}
+  var keyForValue = k;
+
+
+    
+   if (this._storage.get(i) !== null && this._storage.get(i) !== undefined){
+      this._storage.get(i).push(keyForValue); 
+      this._storage.get(i).push(v); 
+
+
+  } else {
+
+    this._storage.set(i,[]);
+    this._storage.get(i).push(keyForValue);
+    this._storage.get(i).push(v);
+
+  }
 
 };
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-
-  return this._storage.get(i);
+  for (var j = 0; j < this._storage.get(i).length;j++){
+    if (k === this._storage.get(i)[j]) {
+      return this._storage.get(i)[j + 1];
+    }
+  }
 
 };
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k,this._limit);
-  //console.log(this._storage.get(i));
   if (this._storage.get(i) !== undefined) {
     this._storage.each(function(value, index, collection) {
       if (index === i) {
-        collection[index] = null;
+        for (var j = 0; j < value.length; j++) {
+          if (k === value[j]) {
+            value[j + 1 ] = null
+          }
+        }
       }
-    })
+    });
   }
 
 
