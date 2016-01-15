@@ -1,11 +1,11 @@
-
+//pseudoclassical style
 
 var Graph = function(){
   this.storage = {};
   this.index = 0;
 };
 
-//Time complexity: O(1) because we are just completing two operations (storing value and adding index by 1) regardless of the input. 
+//Time complexity: O(1) because the function is just completing two operations (storing value and adding index by 1) regardless of the input. 
 
 Graph.prototype.addNode = function(node){
   this.storage[this.index] = NodeForGraph(node);
@@ -13,7 +13,7 @@ Graph.prototype.addNode = function(node){
 };
 
 
-//Time complexity: O(n) because we are traversing an array (traversing this.storage). This array, might at times have 6 values or 100 values. So our time is dependent on the size of the array, or if you prefer on the inputs of the array.
+//Time complexity: O(n) because the function is traversing an array (traversing this.storage). This array, might at times have 6 values or 100 values. So our time is dependent on the size of the array, or if you prefer on the inputs of the array.
 Graph.prototype.contains = function(node){
   var foundNode = false;
   for (var property in this.storage){
@@ -71,9 +71,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode){
       if(currentNode.value === fromNode || currentNode.value === toNode){
         _.each(currentNode.edge, function(elementInEdgeArray, index){
           if(elementInEdgeArray === fromNode || elementInEdgeArray === toNode){
-            currentNode.edge.splice(index, 1)
+            currentNode.edge.splice(index, 1);
           }  
-        })
+        });
       }
     }
   }
@@ -85,7 +85,7 @@ Graph.prototype.forEachNode = function(cb){
     if (node.value !== undefined) {
       cb(node.value);
     }
-  })
+  });
 };
 
 /*

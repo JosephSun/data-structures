@@ -1,3 +1,4 @@
+//prototypal style
 var Set = function(){
   var set = Object.create(setPrototype);
   set.storage = [];
@@ -11,7 +12,7 @@ setPrototype.add = function(item){
 };
 
 setPrototype.contains = function(item){
-  var containsItem = false;//for readability we are adding this variable name
+  var containsItem = false;//for readability I am adding this variable name
   for (var i = 0; i < this.storage.length; i++) {
     if (this.storage[i] === item) {
       containsItem = true;

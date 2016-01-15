@@ -1,3 +1,5 @@
+//functional with shared methods 
+
 var Tree = function(value){
   var newTree = {};
   newTree.value = value;

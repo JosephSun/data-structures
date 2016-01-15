@@ -11,7 +11,7 @@ BinarySearchTree.prototype.insert = function(value){
       if(node.left === null){
         node.left = new BinarySearchTree(value);
       } else {
-        recurseTree(node.left)
+        recurseTree(node.left);
       }
     } else {
         if(node.right === null){
@@ -20,7 +20,7 @@ BinarySearchTree.prototype.insert = function(value){
           recurseTree(node.right);
         }
       }   
-  }
+  };
   recurseTree(this);
 };
 

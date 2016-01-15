@@ -1,3 +1,5 @@
+//pseudoclassical style
+
 var HashTable = function(){
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
@@ -20,8 +22,8 @@ this._storage.get(i).push(v); //push the value into the array (this array is at 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);//hashFUnction
   for (var j = 0; j < this._storage.get(i).length;j++){//Check every element in the array(which is in the storage array at postion i)
-    if (k === this._storage.get(i)[j]) {//if the key matches the current position we are at.
-      return this._storage.get(i)[j + 1]; //return the next position in the array. Which will always be the value thanks to how we 
+    if (k === this._storage.get(i)[j]) {//if the key matches the current position.
+      return this._storage.get(i)[j + 1]; //return the next position in the array. Which will always be the value 
       //implement insert (line 16 and 17)
     }
   }
