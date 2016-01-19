@@ -3,6 +3,7 @@
 var Graph = function(){
   this.storage = {};
   this.index = 0;
+  this.size = 0;
 };
 
 //Time complexity: O(1) because the function is just completing two operations (storing value and adding index by 1) regardless of the input. 
@@ -10,6 +11,7 @@ var Graph = function(){
 Graph.prototype.addNode = function(node){
   this.storage[this.index] = NodeForGraph(node);
   this.index++;
+  this.size++;
 };
 
 
@@ -29,7 +31,7 @@ Graph.prototype.removeNode = function(node){
   for(var property in this.storage){
     if(this.storage[property].value === node){
       delete this.storage[property];
-      this.index--;
+      this.size--;
     }
   }
 
@@ -94,11 +96,18 @@ Graph.prototype.forEachNode = function(cb){
 function NodeForGraph(val){
   var node = {
     value: val,
-    edge: [],
-    index: 0
-
+    edge: []
   };
   return node;
 }
 
 
+exampleGraph = new Graph; 
+console.log(exampleGraph);
+exampleGraph.addNode('a');
+exampleGraph.addNode('b');
+console.log(exampleGraph);
+exampleGraph.removeNode('a');
+console.log(exampleGraph);
+exampleGraph.addNode('c');
+console.log(exampleGraph);
