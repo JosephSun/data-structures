@@ -65,18 +65,17 @@ Graph.prototype.addEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
-  if (this.contains(fromNode,toNode)){
-    for(var property in this.storage){
-      var currentNode = this.storage[property];
-      if(currentNode.value === fromNode || currentNode.value === toNode){
-        _.each(currentNode.edge, function(elementInEdgeArray, index){
-          if(elementInEdgeArray === fromNode || elementInEdgeArray === toNode){
-            currentNode.edge.splice(index, 1);
-          }  
-        });
-      }
+  for(var property in this.storage){
+    var currentNode = this.storage[property];
+    if(currentNode.value === fromNode || currentNode.value === toNode){
+      _.each(currentNode.edge, function(elementInEdgeArray, index){
+        if(elementInEdgeArray === fromNode || elementInEdgeArray === toNode){
+          currentNode.edge.splice(index, 1);
+        }  
+      });
     }
   }
+  
 };
 
 Graph.prototype.forEachNode = function(cb){
