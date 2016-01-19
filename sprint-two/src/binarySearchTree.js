@@ -1,3 +1,6 @@
+//Pseudo Classical
+
+
 var BinarySearchTree = function(value){
   this.left = null;
   this.right = null;
